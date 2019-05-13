@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+click = "*"
+marshmallow = "*"
+
+[dev-packages]
+ipython = "*"
+pytest-cov = "*"
+pytest-flake8 = "*"
+pytest = "*"
+hypothesis = "*"
+simplejson = "*"
+
+[requires]
+python_version = "3.7"

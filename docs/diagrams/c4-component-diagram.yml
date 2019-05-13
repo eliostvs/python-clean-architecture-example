@@ -1,0 +1,144 @@
+---
+elements:
+  -
+    type: 'Software System'
+    name: 'Customer Finder System'
+    description: 'Allows users to find the nearest customers by geodetic coordinates.'
+    tags: Internal
+    containers:
+      -
+        type: Container
+        name: 'Console Customer Finder System'
+        description: 'Provides all of the Customer Finder system functionality to users.'
+        technology: Python
+        tags: ""
+        components:
+          -
+            type: Component
+            name: Controller
+            description: 'Provides the users with a way to find nearest customers.'
+            technology: 'Click framework'
+            tags: ""
+            position: '1020,570'
+          -
+            type: Component
+            name: 'Geo Distance Calculator'
+            description: 'Calculates the distances in kilometers between two coordinates points.'
+            technology: 'Python function'
+            tags: ""
+            position: '1665,1075'
+          -
+            type: Component
+            name: Adapter
+            description: 'Converts the data from the user input to the business rules parameters and back to the user.'
+            technology: 'Marshmallow framework'
+            tags: ""
+            position: '380,565'
+          -
+            type: Component
+            name: 'Use Case'
+            description: 'Finds the nearest customers from the office sorting by the customer id.'
+            technology: 'Python function'
+            tags: ""
+            position: '1020,1075'
+  -
+    type: Person
+    name: User
+    description: 'A user of Customer Finder System.'
+    tags: ""
+    position: '1040,10'
+relationships:
+  -
+    source: Controller
+    description: Uses
+    technology: ""
+    destination: Adapter
+    tags: ""
+  -
+    source: Controller
+    description: Uses
+    technology: ""
+    destination: 'Use Case'
+    tags: ""
+  -
+    source: 'Use Case'
+    description: Uses
+    technology: ""
+    destination: 'Geo Distance Calculator'
+    tags: ""
+  -
+    source: User
+    description: Uses
+    technology: 'command line'
+    destination: Controller
+    tags: ""
+styles:
+  -
+    type: element
+    tag: Component
+    width: ""
+    height: ""
+    background: '#85bbf0'
+    color: '#000000'
+    border: ""
+    opacity: ""
+    fontSize: ""
+    shape: ""
+    metadata: ""
+    description: ""
+  -
+    type: element
+    tag: Container
+    width: ""
+    height: ""
+    background: '#438dd5'
+    color: ""
+    border: ""
+    opacity: ""
+    fontSize: ""
+    shape: ""
+    metadata: ""
+    description: ""
+  -
+    type: element
+    tag: Element
+    width: ""
+    height: ""
+    background: ""
+    color: '#ffffff'
+    border: ""
+    opacity: ""
+    fontSize: ""
+    shape: ""
+    metadata: ""
+    description: ""
+  -
+    type: element
+    tag: Person
+    width: ""
+    height: ""
+    background: '#08427b'
+    color: ""
+    border: ""
+    opacity: ""
+    fontSize: ""
+    shape: Person
+    metadata: ""
+    description: ""
+  -
+    type: element
+    tag: 'Software System'
+    width: ""
+    height: ""
+    background: '#1168bd'
+    color: ""
+    border: ""
+    opacity: ""
+    fontSize: ""
+    shape: ""
+    metadata: ""
+    description: ""
+type: Component
+scope: 'Console Customer Finder System'
+description: 'The component diagram for the Customer Finder System'
+size: A5_Landscape
