@@ -31,7 +31,7 @@ def great_circle_distance(point_a: Point, point_b: Point) -> Distance:
     from https://en.wikipedia.org/wiki/Great-circle_distance
     It uses the constant `EARTH_RADIUS_IN_KM` as the great-circle radius.
     Example:
-    >>> from example.core.geo import Point, great_circle_distance
+    >>> from example.core.shared.geo import Point, great_circle_distance
     >>> rio_de_janeiro = Point.of(-22.9028, 43.2075)
     >>> sao_paulo = Point.of(-23.5475, 46.6361)
     >>> great_circle_distance(rio_de_janeiro, sao_paulo).kilometers
@@ -47,10 +47,11 @@ def great_circle_distance(point_a: Point, point_b: Point) -> Distance:
     latitude_b_radians = math.radians(point_b.latitude)
 
     central_angle = math.acos(
-        math.sin(latitude_a_radians) * math.sin(latitude_b_radians)
-        + math.cos(latitude_a_radians)
-        * math.cos(latitude_b_radians)
-        * math.cos(delta_radians)
+        math.sin(latitude_a_radians) *
+        math.sin(latitude_b_radians) +
+        math.cos(latitude_a_radians) *
+        math.cos(latitude_b_radians) *
+        math.cos(delta_radians)
     )
 
     distance = EARTH_RADIUS_IN_KM * central_angle

@@ -6,9 +6,9 @@ import simplejson as json
 from hypothesis import given
 
 from example.cli.adapter import from_domain, schema, create_customer_coordinates
-from example.core.entities.customer import Customer, CustomerCoordinate
-from example.core.entities.exceptions import ValidationError
-from example.core.entities.geo import Point
+from example.core.shared.customer import Customer, CustomerCoordinate
+from example.core.shared.exceptions import ValidationError
+from example.core.shared.geo import Point
 from tests.conftest import customer_name_st, user_id_st, longitude_st, latitude_st
 
 

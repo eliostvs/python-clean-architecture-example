@@ -5,9 +5,9 @@ import click
 
 from .adapter import from_domain, create_customer_coordinates
 from example.config import DEFAULTS
-from example.core import use_cases
-from example.core.entities.exceptions import BaseError
-from example.core.entities.geo import Point, Distance
+from example.core.find import usecase
+from example.core.shared.exceptions import BaseError
+from example.core.shared.geo import Point, Distance
 
 getcontext().prec = 7
 
@@ -40,7 +40,7 @@ def run(
 ) -> None:
     """Finds the nearest customers from the office."""
     try:
-        sorted_customers_nearby = use_cases.find_nearest_customer(
+        sorted_customers_nearby = usecase.find_nearest_customer(
             office_coordinate=Point.of(
                 latitude=office_latitude, longitude=office_longitude
             ),

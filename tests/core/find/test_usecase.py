@@ -2,9 +2,9 @@ import hypothesis.strategies as st
 import pytest
 from hypothesis import given
 
-from example.core.entities.customer import CustomerCoordinate, Customer
-from example.core.entities.geo import Distance, great_circle_distance
-from example.core.use_cases import find_nearest_customer
+from example.core.shared.customer import CustomerCoordinate, Customer
+from example.core.shared.geo import Distance, great_circle_distance
+from example.core.find.usecase import find_nearest_customer
 from tests.conftest import point_st
 
 

@@ -3,7 +3,7 @@ from decimal import getcontext
 
 import hypothesis.strategies as st
 
-from example.core.entities.geo import Point
+from example.core.shared.geo import Point
 
 getcontext().prec = 7
 

@@ -14,7 +14,7 @@ Then:
 > docker run --rm python-clean-arch <path-to-customer-file>
 
 You can list the options with the `--help` command:
-
+entities
 > docker run --rm python-clean-arch --help
 
 ## Developing
