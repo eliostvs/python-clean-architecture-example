@@ -2,7 +2,7 @@ from decimal import Decimal
 
 from hypothesis import given
 
-from example.core.shared.geo import great_circle_distance, Point, Distance
+from example.core.domain.geo import great_circle_distance, Point, Distance
 from tests.conftest import point_st
 
 

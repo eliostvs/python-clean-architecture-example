@@ -1,8 +1,8 @@
 from operator import attrgetter
 from typing import List
 
-from example.core.shared.customer import Customer, CustomerCoordinate
-from example.core.shared.geo import Point, Distance, great_circle_distance
+from example.core.domain.customer import Customer, CustomerCoordinate
+from example.core.domain.geo import Point, Distance, great_circle_distance
 
 
 def find_nearest_customer(

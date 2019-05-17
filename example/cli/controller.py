@@ -6,8 +6,8 @@ import click
 from .adapter import from_domain, create_customer_coordinates
 from example.config import DEFAULTS
 from example.core.find import usecase
-from example.core.shared.exceptions import BaseError
-from example.core.shared.geo import Point, Distance
+from example.core.domain.exceptions import BaseError
+from example.core.domain.geo import Point, Distance
 
 getcontext().prec = 7
 

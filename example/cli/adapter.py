@@ -10,8 +10,8 @@ from marshmallow import (
     UnmarshalResult,
 )
 
-from example.core.shared.customer import CustomerCoordinate, Customer
-from example.core.shared.exceptions import ValidationError
+from example.core.domain.customer import CustomerCoordinate, Customer
+from example.core.domain.exceptions import ValidationError
 
 
 def _must_not_be_empty(value: str) -> None:
