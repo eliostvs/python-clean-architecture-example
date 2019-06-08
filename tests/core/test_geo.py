@@ -2,12 +2,12 @@ from decimal import Decimal
 
 from hypothesis import given
 
-from example.core.domain.geo import great_circle_distance, Point, Distance
+from example.core.geo import great_circle_distance, Point, Distance
 from tests.conftest import point_st
 
 
 @given(point_st, point_st)
-def test_inverse_of_the_distances_is_equal(point_a, point_b):
+def test_inverse_of_the_distances_are_equal(point_a, point_b):
     assert great_circle_distance(point_a, point_b) == great_circle_distance(
         point_b, point_a
     )

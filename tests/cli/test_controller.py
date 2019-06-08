@@ -27,7 +27,7 @@ success_response = """
 """
 
 
-def test_integration_should_succeed():
+def test_integration_succeed():
     runner = CliRunner()
     result = runner.invoke(run, [join(HERE, "customers.txt")])
 
@@ -35,7 +35,7 @@ def test_integration_should_succeed():
     assert result.output.strip() == inspect.cleandoc(success_response)
 
 
-def test_integration_should_fail():
+def test_integration_fail():
     runner = CliRunner()
     with runner.isolated_filesystem():
         with open("invalid-file.txt", "w") as f:

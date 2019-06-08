@@ -1,8 +1,8 @@
 import hypothesis.strategies as st
 from hypothesis import given
 
-from example.core.domain.customer import CustomerCoordinate, Customer
-from example.core.domain.geo import Point
+from example.core.customer import CustomerCoordinate, Customer
+from example.core.geo import Point
 
 
 @given(st.text(), st.integers(), st.floats(), st.floats())

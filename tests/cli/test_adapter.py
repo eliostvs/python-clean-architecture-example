@@ -6,10 +6,10 @@ import simplejson as json
 from hypothesis import given
 
 from example.cli.adapter import from_domain, schema, create_customer_coordinates
-from example.core.domain.customer import Customer, CustomerCoordinate
-from example.core.domain.exceptions import ValidationError
-from example.core.domain.geo import Point
-from tests.conftest import customer_name_st, user_id_st, longitude_st, latitude_st
+from example.core.customer import Customer, CustomerCoordinate
+from example.core.exceptions import ValidationError
+from example.core.geo import Point
+from tests.conftest import name_st, user_id_st, longitude_st, latitude_st
 
 
 @given(st.lists(st.builds(Customer, name=st.text())))
@@ -21,7 +21,7 @@ def test_from_domain(customers: List[Customer]):
 
 
 class TestCreateCustomerCoordinate:
-    @given(customer_name_st, user_id_st, latitude_st, longitude_st)
+    @given(name_st, user_id_st, latitude_st, longitude_st)
     def test_successfully_returns_customer_coordinates(
         self, name, user_id, latitude, longitude
     ):

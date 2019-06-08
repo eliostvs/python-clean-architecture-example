@@ -3,7 +3,7 @@ from decimal import getcontext
 
 import hypothesis.strategies as st
 
-from example.core.domain.geo import Point
+from example.core.geo import Point
 
 getcontext().prec = 7
 
@@ -13,4 +13,4 @@ longitude_st = st.decimals(
 )
 point_st = st.builds(Point, latitude=latitude_st, longitude=longitude_st)
 user_id_st = st.integers(min_value=0)
-customer_name_st = st.text(min_size=1, alphabet=string.ascii_letters)
+name_st = st.text(min_size=1, alphabet=string.ascii_letters)
