@@ -1,13 +1,13 @@
 import inspect
-from os.path import dirname, abspath, join
+from os.path import abspath, dirname, join
 
 from click.testing import CliRunner
 
-from example.cli.controller import run
+from example.terminal.cli import main
 
 HERE = dirname(abspath(__file__))
 
-success_response = """
+expected_response = """
 4 - Ian Kehoe
 5 - Nora Dempsey
 6 - Theresa Enright
@@ -27,20 +27,23 @@ success_response = """
 """
 
 
-def test_integration_succeed():
+def test_main_succeed():
     runner = CliRunner()
-    result = runner.invoke(run, [join(HERE, "customers.txt")])
+    result = runner.invoke(main, [join(HERE, "customers.txt")])
 
     assert result.exit_code == 0
-    assert result.output.strip() == inspect.cleandoc(success_response)
+    assert result.output.strip() == inspect.cleandoc(expected_response)
 
 
-def test_integration_fail():
+def test_main_fail():
     runner = CliRunner()
     with runner.isolated_filesystem():
         with open("invalid-file.txt", "w") as f:
             f.write("Hello World!")
 
-        result = runner.invoke(run, ["invalid-file.txt"])
+        result = runner.invoke(main, ["invalid-file.txt"])
         assert result.exit_code == 0
-        assert result.output == "Invalid json\n"
+        assert (
+            "1 validation error for CustomerCoordinateInput\n__root__\n  Expecting value:"
+            in result.output
+        )

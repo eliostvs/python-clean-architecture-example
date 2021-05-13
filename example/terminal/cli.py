@@ -2,12 +2,11 @@ from decimal import getcontext
 from typing import TextIO
 
 import click
+from pydantic import ValidationError
 
-from .adapter import from_domain, create_customer_coordinates
 from example.config import DEFAULTS
-from example.core import find
-from example.core.exceptions import BaseError
-from example.core.geo import Point, Distance
+from example.search import Distance, Point, search_nearest_customers
+from .input import create_customer_coordinates, stringify_customers
 
 getcontext().prec = 7
 
@@ -32,23 +31,22 @@ getcontext().prec = 7
     type=float,
     help="office decimal longitude",
 )
-def run(
+def main(
     file_stream: TextIO,
     max_distance: float,
     office_latitude: float,
     office_longitude: float,
 ) -> None:
-    """Finds the nearest customers from the office."""
+    """
+    Finds the nearest customers from the office.
+    """
     try:
-        sorted_customers_nearby = find.nearest_customer(
-            office_coordinate=Point.of(
-                latitude=office_latitude, longitude=office_longitude
-            ),
-            max_distance_from_office=Distance.of(max_distance),
-            customer_coordinates=create_customer_coordinates(file_stream.readlines()),
+        sorted_customers_nearby = search_nearest_customers(
+            origin=Point.of(latitude=office_latitude, longitude=office_longitude),
+            max_distance=Distance.of(max_distance),
+            customers=create_customer_coordinates(file_stream.readlines()),
         )
-
-    except BaseError as error:
+    except ValidationError as error:
         click.echo(error)
     else:
-        click.echo(from_domain(sorted_customers_nearby))
+        click.echo(stringify_customers(sorted_customers_nearby))

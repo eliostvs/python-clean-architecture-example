@@ -1,3 +1,3 @@
-from example.cli.controller import run
+from example.terminal.cli import main
 
-run()
+main()

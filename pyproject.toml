@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "example"
+version = "0.1.0"
+description = "Example of clean architecture in Python"
+authors = ["Elio Esteves Duarte <elio.esteves.duarte@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "3.7"
+click = "^8.0.0"
+pydantic = "^1.8.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+pytest-cov = "^2.11.1"
+pytest-flake8 = "^1.0.7"
+hypothesis = "^6.12.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+flake8-ignore = "E501 E402 W503 W504"
+addopts = "--verbose --flake8 --cov-report term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+omit= ["*test*"]
+include = ["example"]
+
+[tool.black]
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | dist
+  | Makefile
+  | docs
+)/
+'''
+

@@ -1,42 +1,29 @@
 # Python Clean Architecture Example
 
-An customer finder system using the clean architecture.
+A customer search system example based on the clean architecture.
 
-## Installation and Usage
-
-You need to have docker installed.
-Inside the root directory run:
-
-> docker build -t python-clean-arch .
-
-Then:
-
-> docker run --rm python-clean-arch <path-to-customer-file>
-
-You can list the options with the `--help` command:
-entities
-> docker run --rm python-clean-arch --help
+## Usage
 
 ## Developing
 
-You will need [pipenv](https://docs.pipenv.org/) installed.
-Inside the project directory run:
+You will need [poetry](https://python-poetry.org/) installed.
 
-> pipenv install --dev
+In project root run:
 
-This should all core and dev dependencies.
+> make setup
 
 To run the tests run:
 
-> PYTHONPATH=$PWD py.test
+> make test
 
 ## Architecture
 
-The Uncle Bob's *clean architecture* approach was used the build this project.
-It contains two main submodules: **cli** and **core**.
+The *clean architecture* approach was used in this project.
 
-The **core** submodule contains the business rules that are essential for ou application, that is, the domain entities and use cases.
+It contains two main submodules: **search** and **terminal**.
 
-The **cli** submodule contains the presenter and the adapters, that is, the code in this layer interacts with the user and convert data from the format most convenient for the use cases and entities and then back from the use cases to the presenter.
+The **search** submodule contains the business rules that are essential for the application, that is, the domain entities and use cases.
 
-![c4 component diagram](./docs/diagrams/c4-component-diagram.png)
+The **terminal** submodule contains the presenter and the adapters, that is, the code in this layer interacts with the user and convert data from the format most convenient for the use cases and entities and then back from the use cases to the presenter.
+
+![c4 component diagram](http://www.plantuml.com/plantuml/png/RL9DRzim3BtxLt0vfS1QNtRQRNFHeK0612jw3XY9ZON8eY5HDOnX_trKv0J9EbzeF7wynqTzSi7uR0bwaJ5zRTk8qyF1IP_tEL4q78I2F1WUsj5Za3pu-oJMkttRVRdV5kZrvwOTC0b5XNOT3oE7qZDgRTE84q_GvIGyK8GNmcXwU9crVcYQBSN4OLseFiFgLSDAu-gkQJfbHXSexhvp3XRZlCRHQV8owWVn8UBOEtCxTNK7lnlGxo9bRVofS_CCpxfFV4D3XQVppXpXAU904yTZWRQHtvsb1D8J55a99dK342QSGHXIfGeQA0cOHKrIpRUSBenPTE8tYwFKlRQpLR-SEN5pUASebSYY8Bn57YwqS6elX0NHMwWLAK7CNhMDM2JB_rZFUggRq64wRVgKWn77eVmlPfMv7xQe8X0CSxGke10aZkB20VRpgULS2iv-83yGw_ohkpow91XCqU5DzYWS_rLppYoMswKZgG5mT9xhdh0dcOW2oCHNujGATa6A3N-QvXVvvINLUwi19QFmRbEVmFacLvd7chdrxQhjWjVbbkHV)

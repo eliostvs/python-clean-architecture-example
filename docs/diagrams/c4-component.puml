@@ -1,0 +1,20 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Customer Search System
+
+Person(user, "User", "")
+
+Container_Boundary(api, "Customer Geographic Search System") {
+    Component(cli, "CLI Interface", "Click Framework", "Provides the users with a way to search nearest customers")
+    Component(input, "Adapter", "Pydantic", "Converts the data from the user input to the business rules parameters")
+    Component(customer, "Use Case", "Function", "Search the nearest customers from a coordinate sorting by the customer id")
+    Component(geo, "Geographic Distance Calculator", "Function", "Calculates the distances in kilometers between two coordinates points")
+}
+
+Rel(user, cli, "Uses")
+Rel_L(cli, input, "Uses")
+Rel_D(cli, customer, "Uses")
+Rel_L(customer, geo, "Uses")
+
+@enduml
